@@ -11,6 +11,10 @@ const REPEAT_MAX_ATTEMPTS = 5;
 class job {
     attemptCount = 0;
 
+    constructor() {
+        this.getServiceReportData = this.getServiceReportData.bind(this);
+    }
+
     constructURL(job_id) {
         const jobId = job_id ? `/${job_id}` : '';
         return `${config.SERVICE_URL}${jobId}`;
@@ -69,6 +73,10 @@ class job {
                 this.serviceReportData = JSON.parse(rawData);
             });
         }
+    }
+
+    getServiceReportData() {
+        return this.serviceReportData;
     }
 
     checkAvailableJobID() {

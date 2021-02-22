@@ -7,7 +7,7 @@ module.exports = function factory(data) {
 
     router.route('/').get((req, res) => {
         res.render('home', {
-            data: job.serviceReportData
+            data: job.getServiceReportData()
         });
     });
 

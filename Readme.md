@@ -1,6 +1,7 @@
 # INSTALLATION
 1. Requirements
-	- install Node.JS >= 0.10
+	- install Node.JS >= 12.18.0
+	- npm -v 7.5.4
 	- install npm (is optional on most OSes cos' npm is bundled within npm package)
 2. Install npm dependencies
 	npm i

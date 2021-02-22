@@ -6,6 +6,11 @@ const helpers = {
         return JSON.stringify(context);
     },
     filter: (data, arr = []) => {
+
+        if (!Array.isArray(data)) {
+            return [];
+        }
+
         const filteredArr = [...data];
         return filteredArr.filter(item => {
             return JSON.parse(arr).every(filterPair => {
