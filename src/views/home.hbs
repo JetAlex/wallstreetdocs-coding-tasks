@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./styles/styles.css"/>
+    <title>Homepage</title>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    <script type="text/javascript" src="./scripts/app.js"></script>
+</head>
+<body>
+    <div class="l-page-wrapper">
+
+        <div class="m-chart">
+
+            <div class="s-flex">
+                <div class="s50">
+                    <h3 class="chart-title">
+                        Comparison of status codes
+                    </h3>
+                    <canvas id="pie" width="400" height="400" class="status-codes-chart"></canvas>
+                </div>
+                <div class="s50">
+                    <h3 class="chart-title">
+                        Comparison of status text
+                    </h3>
+                    <canvas id="chart" width="400" height="400" class="status-codes-chart"></canvas>
+                </div>
+            </div>
+
+            <table class="table">
+                <tr class="thead-row">
+                    <td class="thead-td">Status Code</td>
+                    <td class="thead-td">Status TEXT</td>
+                    <td class="thead-td">Host name</td>
+                    <td class="thead-td">Nodes</td>
+                </tr>
+                {{#each (filter data.service_reports '[{"key": "status_code", "value": "200"},{"key": "status_text", "value": "OK"}]' )}}
+                    <tr class="tbody-row">
+                        <td class="tbody-td">
+                            <div class="label">{{this.status_code}}</div>
+                        </td>
+                        <td class="tbody-td">
+                            <div class="label">{{this.status_text}}</div>
+                        </td>
+                        <td class="tbody-td">
+                            <div class="label">{{this.host.name}}</div>
+                        </td>
+                        <td class="tbody-td td-node">
+                            {{#each this.nodes}}
+                                <table class="table-inner">
+                                    <tr>
+                                        <td class="node-name"><div class="label">Name</div></td>
+                                        <td class="node-state"><div class="label">State</div></td>
+                                        <td class="node-message"><div class="label">Message</div></td>
+                                        <td class="node-started"><div class="label">Started At</div></td>
+                                        <td class="node-completed"><div class="label">Completed At</div></td>
+                                    </tr>
+                                    {{#each this.checks}}
+                                        <tr class="trow-node">
+                                            <td>{{this.name}}</td>
+                                            <td>{{this.state}}</td>
+                                            <td>{{this.message}}</td>
+                                            <td>{{moment this.started_at}}</td>
+                                            <td>{{moment this.completed_at}}</td>
+                                        </tr>
+                                    {{/each}}
+                                </table>
+                            {{/each}}
+                        </td>
+                    </tr>
+                {{/each}}
+            </table>
+
+            <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    new window.app.ModuleChart({
+                        data: {{{ serialize data }}},
+                    })
+                });
+            </script>
+        </div>
+    </div>
+</body>
+</html>

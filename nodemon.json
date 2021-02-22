@@ -1,0 +1,3 @@
+{
+  "ignore": ["auth.json", "service.json", "report.json"]
+}

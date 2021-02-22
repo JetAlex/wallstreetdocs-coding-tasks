@@ -1,0 +1,101 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+}
+
+
+.m-chart {
+    max-width: 1280px;
+    margin: 50px auto;
+    padding: 25px 20px;
+
+    border: solid 1px #ccc;
+}
+
+.m-chart .chart-title {
+    text-align: center;
+}
+
+.m-chart .status-codes-chart {
+    margin: auto;
+    max-width: 400px;
+}
+
+.m-chart .s-flex {
+    display: flex;
+}
+
+.m-chart .s-flex .s50 {
+    flex: 1 0 0;
+}
+
+.m-chart .table {
+    width: 100%;
+    margin: 25px 0;
+    border: solid 1px #999;
+
+    border-collapse: collapse;
+}
+
+.m-chart .table .thead-row {
+    vertical-align: middle;
+}
+.m-chart .table .thead-row .thead-td {
+    border: solid 1px #999;
+}
+
+.m-chart .table .tbody-row {
+    vertical-align: top;
+}
+
+.m-chart .table .tbody-row .tbody-td {
+    border-bottom: solid 1px #999;
+}
+
+.m-chart .table td {
+    height: 40px;
+    padding: 0 5px;
+}
+
+.m-chart .table .tbody-td.td-node {
+    padding: 0;
+}
+
+.m-chart .table .node-name {
+    width: 25%;
+}
+
+.m-chart .table .node-state {
+    width: 5%;
+}
+
+.m-chart .table .node-message {
+    width: 50%;
+}
+
+.m-chart .table .node-started {
+    width: 10%;
+}
+
+.m-chart .table .node-completed {
+    width: 10%;
+}
+
+.m-chart .table .trow-node {
+    vertical-align: top;
+}
+
+.m-chart .table .label {
+    display: flex;
+    align-items: center;
+    height: 40px;
+}
+
+.table-inner {
+    width: 100%;
+    border-left: solid 1px #999;
+    border-right: solid 1px #999;
+
+    border-collapse: collapse;
+}
