@@ -40,7 +40,7 @@ class job {
             console.log('starting Job with url:', this.constructURL(this.jobID))
             return await axios(this.options).then(async (response) => {
                 if (response.data === '' && this.attemptCount < REPEAT_MAX_ATTEMPTS) {
-                    this.attemptCount++
+                    this.attemptCount++;
                     return await this.promiseTimeOut(() => this.request((settings)));
                 }
 
@@ -120,10 +120,12 @@ class job {
             job_id: this.jobID
         });
 
-        saveFile({
-            fileName: config.LAST_REPORT_FILE,
-            data: serviceReport
-        });
+        if (serviceReport) {
+            saveFile({
+                fileName: config.LAST_REPORT_FILE,
+                data: serviceReport
+            });
+        }
 
         return serviceReport
     }
